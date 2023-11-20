@@ -5,7 +5,7 @@ describe('Testando o modelo Livro' , () =>{
   const objetoLivro = {
     titulo: 'Harry Potter e a Pedra Filosofa',
     paginas: 223,
-    editora_id: 10,
+    editora_id: 3,
     autor_id: 10,
   }
 

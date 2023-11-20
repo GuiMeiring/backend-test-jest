@@ -15,7 +15,7 @@ beforeEach(() =>{
 //HOOKS - Depois de cada teste
 afterEach(() =>{
   server.close();
-});
+})
 
 describe('GET em /editoras', () => {
 
@@ -30,7 +30,7 @@ describe('GET em /editoras', () => {
   });
 });
 
-describe('POSt em /editoras', () => {
+describe('POST em /editoras', () => {
 
   it('Deve adicionar uma nova editora', async () => {
 
@@ -64,22 +64,28 @@ describe('GET em /editoras/id', () => {
 });
 
 describe('PUT em /editoras/id', () => {
-
   test.each([
-    ['nome', {nome: 'Casa do Código' }],
-    ['cidade', { cidade: 'SP'}],
-    ['email', {email: 'cdc@cdc.com'}]
+    ['nome', { nome: 'Casa do Codigo' }],
+    ['cidade', { cidade: 'SP' }],
+    ['email', { email: 'cdc@cdc.com' }],
   ])('Deve alterar o registro do BD', async (chave, param) => {
-
-    const requisicao = { request }
+    const requisicao = { request };
     const spy = jest.spyOn(requisicao, 'request');
 
     await requisicao.request(app)
       .put(`/editoras/${idResposta}`)
       .send(param)
       .expect(200);
-
     expect(spy).toHaveBeenCalled();
+  });
+});
+
+describe('DELETE em /editoras/id', () => {
+
+  it('Deletar o recurso adicionado', async () => {
+    await request(app)
+    .delete(`/editoras/${idResposta}`)
+    .expect(200);
   });
 });
 
