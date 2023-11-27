@@ -8,7 +8,7 @@ let idResposta;
 
 //HOOKS - ANtes de cada teste
 beforeEach(() =>{
-  const port= 3000;
+  const port= 3002;
   server = app.listen(port);
 });
 

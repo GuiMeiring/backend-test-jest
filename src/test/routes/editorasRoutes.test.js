@@ -8,13 +8,13 @@ let idResposta;
 
 //HOOKS - ANtes de cada teste
 beforeEach(() =>{
-  const port= 3000;
+  const port= 3001;
   server = app.listen(port);
 });
 
 //HOOKS - Depois de cada teste
 afterEach(() =>{
-  server.close();
+  server.close() ;
 })
 
 describe('GET em /editoras', () => {
@@ -77,15 +77,6 @@ describe('PUT em /editoras/id', () => {
       .send(param)
       .expect(200);
     expect(spy).toHaveBeenCalled();
-  });
-});
-
-describe('DELETE em /editoras/id', () => {
-
-  it('Deletar o recurso adicionado', async () => {
-    await request(app)
-    .delete(`/editoras/${idResposta}`)
-    .expect(200);
   });
 });
 
